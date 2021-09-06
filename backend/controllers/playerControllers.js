@@ -10,4 +10,11 @@ export const addNewPlayer = (req, res) => {
   });
 };
 
-export const getPlayers = (req, res) => {};
+export const getPlayers = (req, res) => {
+  Player.find({}, (err, player) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(player);
+  });
+};
