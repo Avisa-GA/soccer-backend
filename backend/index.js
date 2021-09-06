@@ -1,8 +1,9 @@
 import express from "express";
-const app = express();
-require("dotenv").config();
+import routes from "./routes/soccerRoutes";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
+const app = express();
+require("dotenv").config();
 
 const { PORT, DATABASE_URL } = process.env;
 
@@ -16,6 +17,8 @@ mongoose.connect(DATABASE_URL, {
 // bodyParser setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+routes(app);
 
 app.get("/", (req, res) =>
   res.send(`Our Soccer application is running ${PORT}`)

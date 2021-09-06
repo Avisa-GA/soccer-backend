@@ -54,3 +54,5 @@ export const playerSchema = new Schema({
     default: Date.now(),
   },
 });
+
+module.exports = mongoose.model("Player", playerSchema);
